@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React App</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/csscss@1.1.2/index.css">
+</head>
+<body class="ma-0">
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            const [message, setMessage] = React.useState('Hello World');
+            const handleClick = () => { setMessage(`Hello World \n ${new Date().toISOString()}`); };
+            return (
+                <div className="flex-col h-100vh w-100 ">   
+                    <div className=" pa-1 bord-r-15 pos-rel flex-col" style={{
+                            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                            boxShadow: '0 2px 6px 0 rgba(0, 0, 0, 0.5), inset -1px -1px 4px 0 rgb(0, 0, 0)',
+                        }}
+                    >
+                        <div className=" h-400px flex-col w-200px bord-r-25" style={{backgroundColor:"#F9F9FB"}}>
+                            <h1 onClick={handleClick} className=" tx-center tx-smd ma-0 opaci-chov--50 tx-sans tx-bold-2">{message}</h1>
+                        </div>
+                        <div className="pos-abs bottom-0 flex-row w-90 mb-2 bord-r-b-25 flex-justify-around bg-white" style={{ filter: 'saturate(0)', }}>
+                            <div onClick={()=>setMessage('📁')} className="folder-icon opaci-chov--50 px-2 py-4">{'📁'}</div>
+                            <div onClick={()=>setMessage('📞')} className="phone-icon opaci-chov--50 px-2 py-4">{'📞'}</div>
+                            <div onClick={()=>setMessage('👤')} className="user-icon opaci-chov--50 px-2 py-4">{'👤'}</div>
+                            <div onClick={()=>setMessage('🏠')} className="home-icon opaci-chov--50 px-2 py-4">{'🏠'}</div>
+                        </div>
+                    </div>  
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
